@@ -19,8 +19,8 @@ class Animal:
                 f"}}")
 
     @classmethod
-    def __str__(cls) -> str:
-        return "[" + ", ".join(repr(animal) for animal in cls.alive) + "]"
+    def list_alive_animals(cls) -> str:
+        return "[" + ", ".join(str(animal) for animal in cls.alive) + "]"
 
 
 class Herbivore(Animal):
@@ -29,7 +29,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Animal) -> None:
+    def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
             if herbivore.health <= 0:
